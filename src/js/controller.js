@@ -14,8 +14,22 @@ const timeout = function (s) {
 
 ///////////////////////////////////////
 
+const renderSpinner = parentEl => {
+  const markup = `
+  <div class="spinner">
+    <svg>
+      <use href="${icons}#icon-loader"></use>
+    </svg>
+  </div> -->
+  `;
+  parentEl.innerHTML = '';
+  parentEl.insertAdjacentHTML('afterbegin', markup);
+};
+
 const showRecipe = async () => {
   try {
+    // Render Spinner Before Loading Any Content
+    renderSpinner(recipeContainer);
     // Loading Recipe
     const res = await fetch(
       'https://forkify-api.herokuapp.com/api/v2/recipes/5ed6604591c37cdc054bcc13'
