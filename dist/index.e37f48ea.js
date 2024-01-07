@@ -609,6 +609,7 @@ const showRecipe = async ()=>{
     try {
         // Getting Id From URL
         const id = window.location.hash.slice(1);
+        if (!id) return;
         // Render Spinner Before Loading Any Content
         renderSpinner(recipeContainer);
         // Loading Recipe
@@ -723,8 +724,15 @@ const showRecipe = async ()=>{
         alert(err);
     }
 };
-window.addEventListener("hashchange", showRecipe);
-window.addEventListener("load", showRecipe);
+// Loaading Events Method
+/*
+window.addEventListener('hashchange', showRecipe);
+window.addEventListener('load', showRecipe);
+*/ // Loading Events Method 2
+[
+    "hashchange",
+    "load"
+].forEach((ev)=>window.addEventListener(ev, showRecipe));
 
 },{"core-js/modules/web.immediate.js":"49tUX","../img/icons.svg":"cMpiy","regenerator-runtime/runtime":"dXNgZ","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"49tUX":[function(require,module,exports) {
 "use strict";
